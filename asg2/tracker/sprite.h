@@ -17,6 +17,17 @@ public:
 
   virtual void update(Uint32 ticks);
 
+  Sprite& operator=(const Sprite& rhs) {
+    Drawable::operator=(rhs);
+    frame = rhs.frame;
+    frameWidth = rhs.frameWidth;
+    frameHeight = rhs.frameHeight;
+    worldWidth = rhs.worldWidth;
+    worldHeight = rhs.worldHeight;
+    return *this;
+  } 
+
+
 private:
   const Frame * frame;
   int frameWidth;
