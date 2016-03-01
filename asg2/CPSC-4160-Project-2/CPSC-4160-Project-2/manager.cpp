@@ -103,6 +103,7 @@ void Manager::update() {
 void Manager::play() {
     SDL_Event event;
     bool done = false;
+    bool keyPressed = false;
     
     while ( not done ) {
         while ( SDL_PollEvent(&event) ) {
@@ -122,6 +123,14 @@ void Manager::play() {
                 if (keystate[SDLK_F4] && !makeVideo) {
                     std::cout << "Making video frames" << std::endl;
                     makeVideo = true;
+                }
+                if(keystate[SDLK_p] && !keyPressed) {
+                    keyPressed = true;
+                    if(clock.isPaused()) {
+                        clock.unpause();
+                    } else {
+                        clock.pause();
+                    }
                 }
             }
         }

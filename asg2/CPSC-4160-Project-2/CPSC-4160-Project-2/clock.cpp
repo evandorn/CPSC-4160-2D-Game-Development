@@ -26,6 +26,7 @@ Clock& Clock::getInstance() {
 Clock::Clock() :
 started(false),
 sloMo(false),
+puased(false),
 framesAreCapped(Gamedata::getInstance()->getXmlBool("framesAreCapped")),
 frameCap(Gamedata::getInstance()->getXmlInt("frameCap")),
 frames(0),
@@ -33,7 +34,7 @@ recentFrames(),
 maxFramesToAvg(100),
 tickSum(0),
 sumOfAllTicks(0),
-timeAtStart(0),
+timeAtStart(0), timeWhenPaused(0),
 currTicks(0), prevTicks(0), ticks(0)
 {
     start();
@@ -42,6 +43,7 @@ currTicks(0), prevTicks(0), ticks(0)
 Clock::Clock(const Clock& c) :
 started(c.started),
 sloMo(c.sloMo),
+paused(c.puased),
 framesAreCapped(c.framesAreCapped),
 frameCap(c.frameCap),
 frames(c.frames), recentFrames(c.recentFrames),
@@ -80,12 +82,14 @@ void Clock::toggleSloMo() {
 }
 
 unsigned int Clock::getTicks() const {
-    if ( sloMo ) return 1;
-    else return SDL_GetTicks() - timeAtStart;
+    if(puased) { return timeWhenPaused; }
+    if ( sloMo ) { return 1; }
+    else { return SDL_GetTicks() - timeAtStart; }
 }
 
 unsigned int Clock::getElapsedTicks() {
-    if ( sloMo ) return 1;
+    if(puased) { return -1 }
+    else if ( sloMo ) { return 1; }
     
     currTicks = getTicks();
     ticks = currTicks-prevTicks;
@@ -122,6 +126,8 @@ int Clock::getAvgFps() const {
 }
 
 Clock& Clock::operator++() {
+    // Initial check to see if game is paused
+    if(!paused) {
     ++frames;
     if ( recentFrames.size() >= maxFramesToAvg ) {
         tickSum -= recentFrames.front();
@@ -129,11 +135,28 @@ Clock& Clock::operator++() {
     }
     recentFrames.push_back( ticks );
     tickSum += ticks;
+    }
     return *this;
 }
 
 void Clock::start() { 
-    started = true; 
+    started = true;
+    paused = false;
     frames = 0;
+    timeWhenPaused = SDL_GetTicks();            // I think I need to do this..
+}
+
+void Clock::pause() {
+    if(started && !paused) {
+        timeWhenPaused = SDL_GetTicks() - timestampWhenPaused;
+        paused = true;
+    }
+}
+
+void CLock::unpause() {
+    if(started && paused) {
+        timeAtStart = SDL_GetTicks() - timeWhenPaused;
+        paused = false;
+    }
 }
 

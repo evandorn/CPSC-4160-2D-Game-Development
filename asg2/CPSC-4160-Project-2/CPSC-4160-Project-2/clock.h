@@ -28,6 +28,7 @@ private:
     bool sloMo;
     const bool framesAreCapped;
     const int frameCap;
+    bool paused;
     
     unsigned int frames;
     std::deque<int> recentFrames;
@@ -36,6 +37,7 @@ private:
     unsigned int tickSum;
     unsigned int sumOfAllTicks;
     unsigned int timeAtStart;
+    unsigned int timeWhenPaused;
     unsigned int currTicks;
     unsigned int prevTicks;
     unsigned int ticks;
@@ -44,6 +46,7 @@ private:
     Clock& operator++();
     void toggleSloMo();
     
+    bool isPaused() const  { return paused; }
     bool isStarted() const { return started; }
     unsigned int getFrames() const  { return frames;  }
     unsigned int getSeconds() const { return getTicks()/1000;  }
@@ -52,6 +55,8 @@ private:
     int getAvgFps() const;
     
     void start();
+    void pause();
+    void unpause();
     void display() const;
     
     Clock();
