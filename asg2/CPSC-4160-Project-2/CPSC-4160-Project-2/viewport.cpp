@@ -21,8 +21,9 @@ gdata(Gamedata::getInstance()),
 position(0, 0),
 viewWidth(gdata->getXmlInt("view/width")),
 viewHeight(gdata->getXmlInt("view/height")),
-worldWidth(WORLD_WIDTH),
-worldHeight(WORLD_HEIGHT),
+// Not sure if syntax is correct here? I feel like it should be gdata->getXmlInt
+worldWidth(Gamedata :: getInstance()  -> getXmlInt("view/width")),
+worldHeight(Gamedata :: getInstance() -> getXmlInt("view/height")),
 objWidth(0), objHeight(0),
 objectToTrack(NULL)
 {}

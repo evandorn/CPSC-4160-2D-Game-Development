@@ -16,6 +16,11 @@
   <height>480</height>
 </view>
 
+<world>
+    <width>1000</width>
+    <height>1000</height>
+</world>
+
 <back>
   <file>images/checkerboard.bmp</file>
   <red>193</red>
