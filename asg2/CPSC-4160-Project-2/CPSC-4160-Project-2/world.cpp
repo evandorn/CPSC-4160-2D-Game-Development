@@ -16,7 +16,9 @@ io( IOManager::getInstance() ),
 frame( FrameFactory::getInstance()->getFrame(name) ),
 factor(fact),
 frameWidth( frame->getWidth() ),
-worldWidth( WORLD_WIDTH ),
+// worldWidth( WORLD_WIDTH ),
+// I THINK THIS IS RIGHT?
+worldHeight(Gamedata :: getInstance() -> getXmlInt("view/height")),
 viewX(0.0), viewY(0.0),
 view(Viewport::getInstance())
 {}

@@ -26,8 +26,11 @@ Drawable(name,
                   Gamedata::getInstance()->getXmlInt(name+"/speedY"))
          ),
 frames( FrameFactory::getInstance()->getFrames(name) ),
-worldWidth(WORLD_WIDTH),
-worldHeight(WORLD_HEIGHT),
+//worldWidth(WORLD_WIDTH),
+//worldHeight(WORLD_HEIGHT),
+
+worldWidth(Gamedata :: getInstance()  -> getXmlInt("view/width")),
+worldHeight(Gamedata :: getInstance() -> getXmlInt("view/height")),
 
 currentFrame(0),
 numberOfFrames( Gamedata::getInstance()->getXmlInt(name+"/frames") ),
