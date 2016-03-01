@@ -53,6 +53,7 @@ setgcc:
 # Uses static pattern rule to keep from compiling all
 #   objects every time.
 $(OBJS): %.o: %.cpp
+	@echo "Here " $CXX $CXXFLAGS
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(DEPS): %.d: %.cpp

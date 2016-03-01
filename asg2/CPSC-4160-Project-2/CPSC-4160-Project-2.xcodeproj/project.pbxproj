@@ -24,6 +24,7 @@
 		20555A101C7CEDDE00E15BCF /* frame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20555A0E1C7CEDDE00E15BCF /* frame.cpp */; };
 		20555A131C7CEDEE00E15BCF /* extractSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20555A111C7CEDEE00E15BCF /* extractSurface.cpp */; };
 		20555A181C7CF8BD00E15BCF /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20555A171C7CF8BD00E15BCF /* SDL_ttf.framework */; };
+		20DD78151C80F13E00E70DC5 /* libexpat.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DD78141C80F13E00E70DC5 /* libexpat.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +91,7 @@
 		20555A411C7CFC6600E15BCF /* yellowstar32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowstar32.png; path = "CPSC-4160-Project-2/images/yellowstar32.png"; sourceTree = SOURCE_ROOT; };
 		20C807541C7CFCC000DEACF9 /* dyslexic-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "dyslexic-bold.otf"; path = "CPSC-4160-Project-2/font/dyslexic-bold.otf"; sourceTree = SOURCE_ROOT; };
 		20C807551C7CFCC000DEACF9 /* dyslexic-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "dyslexic-regular.otf"; path = "CPSC-4160-Project-2/font/dyslexic-regular.otf"; sourceTree = SOURCE_ROOT; };
+		20DD78141C80F13E00E70DC5 /* libexpat.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexpat.tbd; path = usr/lib/libexpat.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20DD78151C80F13E00E70DC5 /* libexpat.tbd in Frameworks */,
 				20555A181C7CF8BD00E15BCF /* SDL_ttf.framework in Frameworks */,
 				205559EB1C7CEBE200E15BCF /* SDL_image.framework in Frameworks */,
 				205559EC1C7CEBE200E15BCF /* SDL.framework in Frameworks */,
@@ -109,6 +112,7 @@
 		205559D61C7CEBC200E15BCF = {
 			isa = PBXGroup;
 			children = (
+				20DD78141C80F13E00E70DC5 /* libexpat.tbd */,
 				20555A171C7CF8BD00E15BCF /* SDL_ttf.framework */,
 				205559E91C7CEBE200E15BCF /* SDL_image.framework */,
 				205559EA1C7CEBE200E15BCF /* SDL.framework */,
