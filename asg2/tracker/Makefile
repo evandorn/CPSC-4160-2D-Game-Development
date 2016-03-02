@@ -67,4 +67,4 @@ $(DEPS): %.d: %.cpp
 $(EXEC): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
 
-include $(DEPS)
+# include $(DEPS)
