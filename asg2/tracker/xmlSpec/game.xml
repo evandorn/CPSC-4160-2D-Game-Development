@@ -2,18 +2,18 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation. 
      So make sure to include your name as part of the screenTitle -->
-<screenTitle>Daniel McLaughlin's Animation</screenTitle>
+<screenTitle>Evan Dorn's Animation</screenTitle>
 <maxStringSize>50</maxStringSize>
 
 <frameCap>60</frameCap>
 <framesAreCapped>true</framesAreCapped>
 
 <frameMax>300</frameMax>
-<username>dmclaug</username>
+<username>dorn3</username>
 
 <world>
-  <worldWidth>2000</worldWidth>
-  <worldHeight>960</worldHeight>
+  <worldWidth>1000</worldWidth>
+  <worldHeight>1000</worldHeight>
 </world>
 
 <view>

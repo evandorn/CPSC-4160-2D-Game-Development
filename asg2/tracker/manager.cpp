@@ -122,7 +122,7 @@ void Manager::play() {
           std::cout << "Making video frames" << std::endl;
           makeVideo = true;
         }
-          if (keystate[SDLK_p] && !keyCatch) {
+          if (keystate[SDLK_p] && !keyPressed) {
               keyPressed = true;
               if ( clock.isPaused() ) clock.unpause();
               else clock.pause();

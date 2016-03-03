@@ -7,7 +7,7 @@
 #include "ioManager.h"
 
 Clock& Clock::getInstance() {
-  if ( SDL_WasInit(SDL_INIT_VIDEO) == 0) {
+ if ( SDL_WasInit(SDL_INIT_VIDEO) == 0) {
     throw std::string("Must init SDL before Clock");
   }
   static Clock clock; 
@@ -18,7 +18,6 @@ Clock::Clock() :
   started(false),
   paused(false),
   sloMo(false),
-  ticksAtLastFrame(0), 
   framesAreCapped(Gamedata::getInstance().getXmlBool("framesAreCapped")), 
   frameCap(Gamedata::getInstance().getXmlInt("frameCap")), 
   frames(0), 
@@ -35,14 +34,13 @@ Clock::Clock() :
 Clock::Clock(const Clock& c) :
   started(c.started),
   paused(c.paused),
-  sloMo(c.sloMo),
-  ticksAtLastFrame(c.ticksAtLastFrame) 
+  sloMo(c.sloMo), 
   framesAreCapped(c.framesAreCapped), 
   frameCap(c.frameCap), 
   frames(c.frames), recentFrames(c.recentFrames), 
   maxFramesToAvg(c.maxFramesToAvg), tickSum(c.tickSum),
   sumOfAllTicks(c.sumOfAllTicks),
-timeAtStart(c.timeAtStart), timeAtPause(c.timeAtPause),
+  timeAtStart(c.timeAtStart), timeAtPause(c.timeAtPause),
   currTicks(c.currTicks), prevTicks(c.prevTicks), ticks(c.ticks)
   {
   start();
