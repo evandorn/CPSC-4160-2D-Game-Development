@@ -29,4 +29,3 @@ void World::draw() const {
   frame->draw(viewX, viewY, 0, 0); 
   frame->draw(0, viewY, frameWidth-viewX, 0); 
 }
-

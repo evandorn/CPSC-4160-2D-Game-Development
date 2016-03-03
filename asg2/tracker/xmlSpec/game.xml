@@ -50,7 +50,7 @@
 </spinstar>
 
 <star>
-  <file>images/yellowstar32.png</file>
+  <file>images/gaintmetroid.png</file>
   <startLoc x="320" y="240"/>
   <speedX>-175</speedX>
   <speedY>-175</speedY>
