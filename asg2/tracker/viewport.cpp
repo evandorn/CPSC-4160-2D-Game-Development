@@ -1,55 +1,45 @@
-//
-//  viewport.cpp
-//  CPSC-4160-Project-2
-//
-//  Created by Evan Dorn on 2/23/16.
-//  Copyright © 2016 evandorn. All rights reserved.
-//
-
 #include <sstream>
-
 #include "ioManager.h"
 #include "viewport.h"
 
 Viewport& Viewport::getInstance() {
-    static Viewport viewport;
-    return viewport;
+  static Viewport viewport;
+  return viewport;
 }
 
-Viewport::Viewport() :
-gdata(Gamedata::getInstance()),
-position(0, 0),
-viewWidth(gdata->getXmlInt("view/width")),
-viewHeight(gdata->getXmlInt("view/height")),
-// Not sure if syntax is correct here? I feel like it should be gdata->getXmlInt
-worldWidth(Gamedata :: getInstance()  -> getXmlInt("view/width")),
-worldHeight(Gamedata :: getInstance() -> getXmlInt("view/height")),
-objWidth(0), objHeight(0),
-objectToTrack(NULL)
+Viewport::Viewport() : 
+  gdata(Gamedata::getInstance()),
+  position(0, 0),
+  viewWidth(gdata.getXmlInt("view/width")), 
+  viewHeight(gdata.getXmlInt("view/height")),
+  worldWidth(Gamedata::getInstance().getXmlInt("world/worldWidth")),
+  worldHeight(Gamedata::getInstance().getXmlInt("world/worldHeight")),
+  objWidth(0), objHeight(0),
+  objectToTrack(NULL) 
 {}
 
-void Viewport::setObjectToTrack(const Drawable *obj) {
-    objectToTrack = obj;
-    objWidth = objectToTrack->getFrame()->getWidth();
-    objHeight = objectToTrack->getFrame()->getHeight();
+void Viewport::setObjectToTrack(const Drawable *obj) { 
+  objectToTrack = obj; 
+  objWidth = objectToTrack->getFrame()->getWidth();
+  objHeight = objectToTrack->getFrame()->getHeight();
 }
 
 void Viewport::draw() const {
-    IOManager::getInstance()->
+  IOManager::getInstance().
     printMessageCenteredAt("Tracking "+objectToTrack->getName(), 30);
 }
 
 void Viewport::update() {
-    const float x = objectToTrack->X();
-    const float y = objectToTrack->Y();
-    position[0] = (x + objWidth/2) - viewWidth/2;
-    position[1] = (y + objHeight/2) - viewHeight/2;
-    if (position[0] < 0) position[0] = 0;
-    if (position[1] < 0) position[1] = 0;
-    if (position[0] > (worldWidth - viewWidth)) {
-        position[0] = worldWidth-viewWidth;
-    }
-    if (position[1] > (worldHeight - viewHeight)) {
-        position[1] = worldHeight-viewHeight;
-    }
+  const float x = objectToTrack->X();
+  const float y = objectToTrack->Y();
+  position[0] = (x + objWidth/2) - viewWidth/2;
+  position[1] = (y + objHeight/2) - viewHeight/2;
+  if (position[0] < 0) position[0] = 0;
+  if (position[1] < 0) position[1] = 0;
+  if (position[0] > (worldWidth - viewWidth)) {
+    position[0] = worldWidth-viewWidth;
+  }
+  if (position[1] > (worldHeight - viewHeight)) {
+    position[1] = worldHeight-viewHeight;
+  }
 }
