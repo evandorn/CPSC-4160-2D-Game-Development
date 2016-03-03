@@ -1,3 +1,11 @@
+//
+//  frame.cpp
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include "SDL/SDL_rotozoom.h"
 #include "drawable.h"
 #include "frame.h"

@@ -1,3 +1,11 @@
+//
+//  sprite.h
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #ifndef SPRITE__H
 #define SPRITE__H
 #include <string>

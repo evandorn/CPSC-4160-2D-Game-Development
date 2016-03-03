@@ -1,10 +1,13 @@
-// Brian Malloy        Game Construction
+//
+//  main.cpp
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include "manager.h"
 #include "frameFactory.h"
-
-//IOManager*     IOManager::instance = NULL;
-//Gamedata*      Gamedata::instance = NULL;
-//FrameFactory*  FrameFactory::instance = NULL;
 
 int main(int, char*[]) {
    try {
