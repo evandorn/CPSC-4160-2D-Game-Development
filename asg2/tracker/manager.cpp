@@ -43,9 +43,9 @@ Manager::Manager() :
   }
   SDL_WM_SetCaption(title.c_str(), NULL);
   atexit(SDL_Quit);
-  sprites.push_back( new MultiSprite("spinstar") );
-  sprites.push_back( new Sprite("star") );
-  sprites.push_back( new Sprite("greenorb") );
+  sprites.push_back( new MultiSprite("samus") );
+  sprites.push_back( new Sprite("metroidgaint") );
+  sprites.push_back( new Sprite("metroidtiny") );
   viewport.setObjectToTrack(sprites[currentSprite]);
 }
 

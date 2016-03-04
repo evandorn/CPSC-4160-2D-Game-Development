@@ -21,8 +21,17 @@
   <height>480</height>
 </view>
 
+<stars>
+  <file>images/starfield.png</file>
+  <red>193</red>
+  <green>205</green>
+  <blue>205</blue>
+  <factor>1</factor>
+  <transparency>false</transparency>
+</stars>
+
 <back>
-  <file>images/checkerboard.bmp</file>
+  <file>images/metroidbackground.png</file>
   <red>193</red>
   <green>205</green>
   <blue>205</blue>
@@ -40,28 +49,28 @@
 </font>
 
 <spinstar>
-  <file>images/star.png</file>
+  <file>images/samus_left.bmp</file>
   <startLoc x="120" y="140"/>
-  <frames>4</frames>
-  <frameInterval>20</frameInterval>
+  <frames>10</frames>
+  <frameInterval>4</frameInterval>
   <speedX>-200</speedX>
-  <speedY>200</speedY>
+  <speedY>0</speedY>
   <transparency>true</transparency>
 </spinstar>
 
 <star>
-  <file>images/gaintmetroid.png</file>
+  <file>images/metroidgaint.png</file>
   <startLoc x="320" y="240"/>
   <speedX>-175</speedX>
-  <speedY>-175</speedY>
+  <speedY>0</speedY>
   <transparency>true</transparency>
 </star>
 
 <greenorb>
-  <file>images/greenball.bmp</file>
+  <file>images/metroidtiny.png</file>
   <startLoc x="320" y="240"/>
   <speedX>175</speedX>
-  <speedY>175</speedY>
+  <speedY>0</speedY>
   <transparency>true</transparency>
 </greenorb>
 
