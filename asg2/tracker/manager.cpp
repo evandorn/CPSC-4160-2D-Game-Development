@@ -28,6 +28,7 @@ Manager::Manager() :
   clock( Clock::getInstance() ),
   screen( io.getScreen() ),
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
+  stars("stars", Gamedata::getInstance().getXmlInt("stars/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(),
   currentSprite(0),
@@ -50,6 +51,7 @@ Manager::Manager() :
 }
 
 void Manager::draw() const {
+  stars.draw();
   world.draw();
   for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
@@ -98,6 +100,7 @@ void Manager::update() {
   if ( makeVideo && frameCount < frameMax ) {
     makeFrame();
   }
+  stars.update();
   world.update();
   viewport.update(); // always update viewport last
 }

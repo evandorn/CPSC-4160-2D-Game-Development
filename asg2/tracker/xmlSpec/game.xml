@@ -12,7 +12,7 @@
 <username>dorn3</username>
 
 <world>
-  <worldWidth>1000</worldWidth>
+  <worldWidth>1500</worldWidth>
   <worldHeight>1000</worldHeight>
 </world>
 
@@ -31,7 +31,7 @@
 </stars>
 
 <back>
-  <file>images/metroidbackground.png</file>
+  <file>images/metroidbg.png</file>
   <red>193</red>
   <green>205</green>
   <blue>205</blue>
@@ -42,36 +42,36 @@
 <font name="font">
   <file>font/dyslexic-bold.otf</file>
   <size>16</size>
-  <red>0</red>
-  <green>0</green>
-  <blue>0</blue>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
   <unused>0</unused>
 </font>
 
-<spinstar>
-  <file>images/samus_left.bmp</file>
-  <startLoc x="120" y="140"/>
+<samus>
+  <file>images/samus_right.bmp</file>
+  <startLoc x="120" y="1000"/>
   <frames>10</frames>
   <frameInterval>4</frameInterval>
   <speedX>-200</speedX>
   <speedY>0</speedY>
   <transparency>true</transparency>
-</spinstar>
+</samus>
 
-<star>
+<metroidgaint>
   <file>images/metroidgaint.png</file>
-  <startLoc x="320" y="240"/>
+  <startLoc x="320" y="1000"/>
   <speedX>-175</speedX>
   <speedY>0</speedY>
   <transparency>true</transparency>
-</star>
+</metroidgaint>
 
-<greenorb>
+<metroidtiny>
   <file>images/metroidtiny.png</file>
-  <startLoc x="320" y="240"/>
+  <startLoc x="320" y="1000"/>
   <speedX>175</speedX>
   <speedY>0</speedY>
   <transparency>true</transparency>
-</greenorb>
+</metroidtiny>
 
 </GameData>
