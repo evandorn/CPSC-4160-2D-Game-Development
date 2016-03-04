@@ -8,7 +8,7 @@
 <frameCap>60</frameCap>
 <framesAreCapped>true</framesAreCapped>
 
-<frameMax>200</frameMax>
+<frameMax>300</frameMax>
 <username>dorn3</username>
 
 <view>
@@ -17,8 +17,8 @@
 </view>
 
 <world>
-    <worldWidth>1500</worldWidth>
-    <worldHeight>1000</worldHeight>
+    <width>1500</width>
+    <height>1000</height>
 </world>
 
 <clock>
@@ -32,6 +32,10 @@
     <green>205</green>
     <blue>205</blue>
     <factor>1</factor>
+    <width>1500</width>
+    <height>1000</height>
+    <srcX> 0 </srcX>
+   <srcY> 0 </srcY> 
     <transparency>false</transparency>
 </back>
 
@@ -41,6 +45,10 @@
     <green>205</green>
     <blue>205</blue>
     <factor>3</factor>
+    <width>1500</width>
+    <height>1000</height>
+     <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
     <transparency>false</transparency>
 </stars>
 
@@ -61,6 +69,10 @@
     <speedX>-150</speedX>
     <speedY>0</speedY>
     <transparency>false</transparency>
+   <width>350</width>
+   <height>48</height>
+   <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
     <chunk>
         <size>9</size>
         <distance>200</distance>
@@ -74,6 +86,10 @@
     <speedX>80</speedX>
     <speedY>0</speedY>
     <transparency>true</transparency>
+   <width> 110</width>
+   <height> 110 </height>
+    <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
     <chunk>
         <size>9</size>
         <distance>200</distance>
@@ -87,6 +103,10 @@
     <speedX>95</speedX>
     <speedY>0</speedY>
     <transparency>true</transparency>
+    <width> 47 </width>
+    <height> 52 </height>
+     <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
     <chunk>
         <size>9</size>
         <distance>200</distance>

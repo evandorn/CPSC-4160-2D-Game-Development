@@ -19,6 +19,7 @@ private:
 
   SDL_Surface * const screen;
   World world;
+  World stars;
   Viewport& viewport;
 
   std::vector<Drawable*> sprites;

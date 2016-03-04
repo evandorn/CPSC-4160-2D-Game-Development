@@ -51,9 +51,8 @@ std::vector<Frame*> FrameFactory::getFrames(const std::string& name) {
   frames.reserve(numberOfFrames);
   Uint16 srcX = gdata.getXmlInt(name+"/srcX");
   Uint16 srcY = gdata.getXmlInt(name+"/srcY");
-  Uint16 width = gdata.getXmlInt(name+"/width");
-  Uint16 height = gdata.getXmlInt(name+"/height");
-
+  Uint16 width = surface->w/numberOfFrames;
+  Uint16 height = surface->h;
   SDL_Surface* surf;
   for (unsigned i = 0; i < numberOfFrames; ++i) {
     unsigned frameX = i * width + srcX;

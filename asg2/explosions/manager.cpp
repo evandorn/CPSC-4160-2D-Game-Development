@@ -21,6 +21,7 @@ Manager::Manager() :
   clock( Clock::getInstance() ),
   screen( io.getScreen() ),
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
+  stars("stars", Gamedata::getInstance().getXmlInt("stars/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(),
   currentSprite(0),
@@ -36,13 +37,14 @@ Manager::Manager() :
   }
   SDL_WM_SetCaption(title.c_str(), NULL);
   atexit(SDL_Quit);
-  sprites.push_back( new Sprite("star") );
-  sprites.push_back( new MultiSprite("spinstar") );
-  sprites.push_back( new Sprite("greenorb") );
+  sprites.push_back( new Sprite("metroidtiny") );
+  sprites.push_back( new MultiSprite("samus") );
+  sprites.push_back( new Sprite("metroidgaint") );
   viewport.setObjectToTrack(sprites[currentSprite]);
 }
 
 void Manager::draw() const {
+  stars.draw();
   world.draw();
   clock.draw();
   for (unsigned i = 0; i < sprites.size(); ++i) {
@@ -82,6 +84,7 @@ void Manager::update() {
   if ( makeVideo && frameCount < frameMax ) {
     makeFrame();
   }
+  stars.update();
   world.update();
   viewport.update(); // always update viewport last
 }

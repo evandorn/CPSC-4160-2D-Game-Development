@@ -82,4 +82,3 @@ void ExplodingSprite::makeChunks(unsigned int n) {
     source_y += chunk_height;
   }
 }
-
