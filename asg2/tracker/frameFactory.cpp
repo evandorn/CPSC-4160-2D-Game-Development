@@ -1,11 +1,3 @@
-//
-//  frameFactory.cpp
-//  CPSC-4160-Project-2
-//
-//  Created by Evan Dorn on 2/23/16.
-//  Copyright © 2016 evandorn. All rights reserved.
-//
-
 #include "frameFactory.h"
 #include "extractSurface.h"
 #include "ioManager.h"
@@ -41,17 +33,25 @@ FrameFactory::~FrameFactory() {
   }
 }
 
-FrameFactory& FrameFactory::getInstance() {
-  static FrameFactory instance;
-  return instance;
+
+FrameFactory& FrameFactory::getInstance(){ 
+  static FrameFactory instance; 
+  return instance; 
 }
 
+
+
+/*FrameFactory* FrameFactory::getInstance() {
+  if ( !instance ) instance = new FrameFactory;
+  return instance;
+}
+*/
 Frame* FrameFactory::getFrame(const std::string& name) {
     std::map<std::string, Frame*>::const_iterator pos = frames.find(name); 
   if ( pos == frames.end() ) {
     SDL_Surface * const surface =
       IOManager::getInstance().loadAndSet(
-          gdata.getXmlStr(name+"/file"),
+          gdata.getXmlStr(name+"/file"), //Changed to . for Meyers 
           gdata.getXmlBool(name+"/transparency"));
     surfaces[name] = surface;
     Frame * const frame =new Frame(surface);
@@ -73,7 +73,7 @@ std::vector<Frame*> FrameFactory::getFrames(const std::string& name) {
 
   // It wasn't in the map, so we have to make the vector of Frames:
   SDL_Surface* surface = IOManager::
-     getInstance().loadAndSet(gdata.getXmlStr(name+"/file"), true);
+     getInstance().loadAndSet(gdata.getXmlStr(name+"/file"), true); //Changed to . for Meyers 
   unsigned numberOfFrames = gdata.getXmlInt(name+"/frames");
   std::vector<Frame*> frames;
   std::vector<SDL_Surface*> surfaces;

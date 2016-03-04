@@ -1,14 +1,7 @@
-//
-//  multisprite.cpp
-//  CPSC-4160-Project-2
-//
-//  Created by Evan Dorn on 2/23/16.
-//  Copyright © 2016 evandorn. All rights reserved.
-//
-
 #include "multisprite.h"
 #include "gamedata.h"
 #include "frameFactory.h"
+
 
 void MultiSprite::advanceFrame(Uint32 ticks) {
 	timeSinceLastFrame += ticks;
@@ -20,17 +13,18 @@ void MultiSprite::advanceFrame(Uint32 ticks) {
 
 MultiSprite::MultiSprite( const std::string& name) :
   Drawable(name, 
-           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"), 
+           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"), //Changed 
                     Gamedata::getInstance().getXmlInt(name+"/startLoc/y")), 
            Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX"),
                     Gamedata::getInstance().getXmlInt(name+"/speedY"))
            ),
-  frames( FrameFactory::getInstance().getFrames(name) ),
-  worldWidth(Gamedata::getInstance().getXmlInt("world/worldWidth")),
-  worldHeight(Gamedata::getInstance().getXmlInt("world/worldHeight")),
+
+  frames( FrameFactory::getInstance().getFrames(name) ), //Changed to . 
+  worldWidth(Gamedata :: getInstance().getXmlInt("world/width")),
+  worldHeight(Gamedata :: getInstance().getXmlInt("world/height")),
 
   currentFrame(0),
-  numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
+  numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ), //Changed 
   frameInterval( Gamedata::getInstance().getXmlInt(name+"/frameInterval") ),
   timeSinceLastFrame( 0 ),
   frameWidth(frames[0]->getWidth()),
@@ -51,27 +45,32 @@ MultiSprite::MultiSprite(const MultiSprite& s) :
   { }
 
 void MultiSprite::draw() const { 
+
   Uint32 x = static_cast<Uint32>(X());
   Uint32 y = static_cast<Uint32>(Y());
   frames[currentFrame]->draw(x, y);
 }
 
-void MultiSprite::update(Uint32 ticks) { 
-  advanceFrame(ticks);
+
+void MultiSprite::update(Uint32 ticks) { //needs velocity
+
     Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
-    setPosition(getPosition() + incr);
-    
-    if ( Y() < 0) {
-        velocityY( abs( velocityY() ) );
-    }
-    if ( Y() > worldHeight-frameHeight) {
-        velocityY( -abs( velocityY() ) );
-    }
-    
-    if ( X() < 0) {
-        velocityX( abs( velocityX() ) );
-    }
-    if ( X() > worldWidth-frameWidth) {
-        velocityX( -abs( velocityX() ) );
-    }
+  setPosition(getPosition() + incr);
+
+  if ( Y() < 0) {
+    velocityY( abs( velocityY() ) );
+  }
+  if ( Y() > worldHeight-frameHeight) {
+    velocityY( -abs( velocityY() ) );
+  }
+
+  if ( X() < 0) {
+    velocityX( abs( velocityX() ) );
+  }
+  if ( X() > worldWidth-frameWidth) {
+    velocityX( -abs( velocityX() ) );
+   
+  }  
+
+  advanceFrame(ticks);
 }

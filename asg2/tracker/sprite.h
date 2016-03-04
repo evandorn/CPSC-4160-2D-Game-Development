@@ -1,15 +1,9 @@
-//
-//  sprite.h
-//  CPSC-4160-Project-2
-//
-//  Created by Evan Dorn on 2/23/16.
-//  Copyright © 2016 evandorn. All rights reserved.
-//
-
 #ifndef SPRITE__H
 #define SPRITE__H
 #include <string>
 #include "drawable.h"
+
+
 
 class Sprite : public Drawable {
 public:
@@ -25,17 +19,20 @@ public:
 
   virtual void update(Uint32 ticks);
 
-  Sprite & operator = (const Sprite &rhs){
-     Drawable :: operator = (rhs);
-     frame = rhs.frame;
-     frameWidth = rhs.frameWidth;
-     frameHeight = rhs.frameHeight;
-     worldWidth = rhs.worldWidth;
-     worldHeight = rhs.worldHeight;
-     return *this;
+
+  Sprite &  operator = (const Sprite &rhs){  //Overload Sprite 
+    Drawable :: operator = (rhs);
+    frame = rhs.frame; 
+    frameWidth = rhs.frameWidth; 
+    frameHeight = rhs.frameHeight; 
+    worldWidth = rhs.worldWidth; 
+    worldHeight = rhs.worldHeight; 
+    return *this;
   }
 
+
 private:
+
   const Frame * frame;
   int frameWidth;
   int frameHeight;

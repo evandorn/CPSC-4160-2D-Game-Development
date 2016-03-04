@@ -1,16 +1,10 @@
-//
-//  multisprite.h
-//  CPSC-4160-Project-2
-//
-//  Created by Evan Dorn on 2/23/16.
-//  Copyright © 2016 evandorn. All rights reserved.
-//
-
 #ifndef MULTISPRITE__H
 #define MULTISPRITE__H
 #include <string>
 #include <vector>
 #include "drawable.h"
+
+
 
 class MultiSprite : public Drawable {
 public:
@@ -24,7 +18,10 @@ public:
     return frames[currentFrame]; 
   }
 
+
+
 protected:
+  
   const std::vector<Frame *> frames;
   int worldWidth;
   int worldHeight;
@@ -37,5 +34,6 @@ protected:
   int frameHeight;
 
   void advanceFrame(Uint32 ticks);
+  MultiSprite& operator=(const MultiSprite&);
 };
 #endif

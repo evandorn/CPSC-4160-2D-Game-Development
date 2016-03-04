@@ -1,38 +1,30 @@
-//
-//  sprite.cpp
-//  CPSC-4160-Project-2
-//
-//  Created by Evan Dorn on 2/23/16.
-//  Copyright © 2016 evandorn. All rights reserved.
-//
-
 #include <cmath>
 #include "sprite.h"
 #include "gamedata.h"
 #include "frameFactory.h"
 
+
 Sprite::Sprite(const std::string& name) :
   Drawable(name,
-           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"), 
+           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"), //Chanhed 
                     Gamedata::getInstance().getXmlInt(name+"/startLoc/y")), 
            Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX"), 
                     Gamedata::getInstance().getXmlInt(name+"/speedY")) 
            ),
-  frame( FrameFactory::getInstance().getFrame(name) ),
+  frame( FrameFactory::getInstance().getFrame(name) ), //Changed 
   frameWidth(frame->getWidth()),
   frameHeight(frame->getHeight()),
-  worldWidth(Gamedata::getInstance().getXmlInt("world/worldWidth")),
-  worldHeight(Gamedata::getInstance().getXmlInt("world/worldHeight"))
-  
+  worldWidth(Gamedata :: getInstance().getXmlInt("world/width")),
+  worldHeight(Gamedata :: getInstance().getXmlInt("world/height"))
 { }
 
 Sprite::Sprite(const string& n, const Vector2f& pos, const Vector2f& vel):
   Drawable(n, pos, vel), 
-  frame( FrameFactory::getInstance().getFrame(n) ),
+  frame( FrameFactory::getInstance().getFrame(n) ), //Changed 
   frameWidth(frame->getWidth()),
   frameHeight(frame->getHeight()),
-  worldWidth(Gamedata::getInstance().getXmlInt("world/worldWidth")),
-  worldHeight(Gamedata::getInstance().getXmlInt("world/worldHeight"))
+  worldWidth(Gamedata :: getInstance().getXmlInt("world/width")),
+  worldHeight(Gamedata :: getInstance().getXmlInt("world/height"))
 { }
 
 Sprite::Sprite(const string& n, const Vector2f& pos, const Vector2f& vel,
@@ -41,8 +33,8 @@ Sprite::Sprite(const string& n, const Vector2f& pos, const Vector2f& vel,
   frame( frm ),
   frameWidth(frame->getWidth()),
   frameHeight(frame->getHeight()),
-  worldWidth(Gamedata::getInstance().getXmlInt("world/worldWidth")),
-  worldHeight(Gamedata::getInstance().getXmlInt("world/worldHeight"))
+  worldWidth(Gamedata :: getInstance().getXmlInt("world/width")), //Changed 
+  worldHeight(Gamedata :: getInstance().getXmlInt("world/height"))
 { }
 
 Sprite::Sprite(const Sprite& s) :
@@ -50,11 +42,13 @@ Sprite::Sprite(const Sprite& s) :
   frame(s.frame),
   frameWidth(s.getFrame()->getWidth()),
   frameHeight(s.getFrame()->getHeight()),
-  worldWidth(Gamedata::getInstance().getXmlInt("world/worldWidth")),
-  worldHeight(Gamedata::getInstance().getXmlInt("world/worldHeight"))
+  worldWidth(Gamedata :: getInstance().getXmlInt("world/width")), //Changed 
+  worldHeight(Gamedata :: getInstance().getXmlInt("world/height"))
 { }
 
 void Sprite::draw() const { 
+  
+
   Uint32 x = static_cast<Uint32>(X());
   Uint32 y = static_cast<Uint32>(Y());
   frame->draw(x, y); 
@@ -65,6 +59,7 @@ int Sprite::getDistance(const Sprite *obj) const {
 }
 
 void Sprite::update(Uint32 ticks) { 
+    
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
   setPosition(getPosition() + incr);
 
