@@ -1,3 +1,11 @@
+//
+//  manager.h
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include <vector>
 #include <SDL.h>
 #include "ioManager.h"
@@ -14,23 +22,18 @@ public:
 
 private:
   const bool env;
-  const IOManager& io; //Changed 
+  const IOManager& io;
   Clock& clock;
 
   SDL_Surface * const screen;
   World world;
-  World town;
-
-  World sky; 
-  World town2; 
-
+  World stars;
   Viewport& viewport;
 
   std::vector<Drawable*> sprites;
   int currentSprite;
 
   bool makeVideo;
-  bool ketCatch;  
   int frameCount;
   const std::string username;
   const std::string title;

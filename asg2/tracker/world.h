@@ -1,3 +1,11 @@
+//
+//  world.h
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include <string>
 #include "ioManager.h"
 #include "frame.h"
@@ -10,7 +18,7 @@ public:
   void update();
   void draw() const;
 private:
-  const IOManager& io; //Changed to & from * 
+  const IOManager& io;
   Frame* const frame;
   int factor;
   unsigned frameWidth;

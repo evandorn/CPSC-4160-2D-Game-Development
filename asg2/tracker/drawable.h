@@ -1,3 +1,11 @@
+//
+//  drawable.h
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #ifndef DRAWABLE__H
 #define DRAWABLE__H
 #include <SDL.h>
@@ -49,8 +57,6 @@ public:
   virtual bool collidedWith(const Drawable*) const { 
     throw std::string("No collidedWith");  
   }
-
-
 
 private:
   std::string name;

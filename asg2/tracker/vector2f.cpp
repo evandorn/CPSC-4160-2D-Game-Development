@@ -1,3 +1,11 @@
+//
+//  vector2f.cpp
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include <cmath>
 #include <string>
 #include <iostream>

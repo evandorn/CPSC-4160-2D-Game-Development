@@ -1,25 +1,21 @@
+//
+//  gamedata.cpp
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include <sstream>
 #include <iostream>
 #include <limits>
 #include <cmath>
 #include "gamedata.h"
 
-
-
-/*Gamedata* Gamedata::getInstance() {
-  if ( !instance ) instance = new Gamedata;
+Gamedata& Gamedata::getInstance() {
+  static Gamedata instance;
   return instance;
 }
-*/
-
-Gamedata& Gamedata::getInstance(){ 
-static Gamedata instance; 
-return instance; 
-
-}
-
-
-
 
 Gamedata::~Gamedata( ) { }
 

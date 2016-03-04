@@ -1,4 +1,12 @@
- #include <SDL.h>
+//
+//  clock.h
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
+#include <SDL.h>
 #include <string>
 #include <deque>
 
@@ -8,10 +16,7 @@ class Clock {
 public:
   static Clock& getInstance();
   unsigned int getTicks() const;
-
   unsigned int getTotalTicks() const { return sumOfAllTicks; }
-
- 
 
 private:
   friend class Manager;
@@ -19,8 +24,6 @@ private:
   bool started;
   bool paused;
   bool sloMo;
-  
-
   const bool framesAreCapped;
   const int frameCap;
 
@@ -31,19 +34,17 @@ private:
   unsigned int tickSum;
   unsigned int sumOfAllTicks;
   unsigned int timeAtStart;
-  unsigned int timeAtPaused;
+  unsigned int timeAtPause;
   unsigned int currTicks;
   unsigned int prevTicks;
   unsigned int ticks;
 
-  unsigned int getElapsedTicks();  
+  unsigned int getElapsedTicks();
   Clock& operator++();
   void toggleSloMo();
 
-
-
   bool isStarted() const { return started; }
-  bool isPaused() const { return paused; }
+  bool isPaused() const  { return paused;  }
   unsigned int getFrames() const  { return frames;  }
   unsigned int getSeconds() const { return getTicks()/1000;  }
   unsigned int capFrameRate() const;
@@ -51,13 +52,9 @@ private:
   int getAvgFps() const;
 
   void start();
-  void pause(); 
-  void unpause(); 
+  void pause();
+  void unpause();
   void display() const;
- 
-
-
-
 
   Clock();
   Clock(const Clock&);

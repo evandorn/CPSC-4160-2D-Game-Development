@@ -1,7 +1,14 @@
+//
+//  viewport.cpp
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include <sstream>
 #include "ioManager.h"
 #include "viewport.h"
-#include "gamedata.h"
 
 Viewport& Viewport::getInstance() {
   static Viewport viewport;
@@ -11,10 +18,10 @@ Viewport& Viewport::getInstance() {
 Viewport::Viewport() : 
   gdata(Gamedata::getInstance()),
   position(0, 0),
-  viewWidth(gdata.getXmlInt("view/width")), //Changed
+  viewWidth(gdata.getXmlInt("view/width")), 
   viewHeight(gdata.getXmlInt("view/height")),
-  worldWidth(Gamedata :: getInstance().getXmlInt("world/width")), //Changed 
-  worldHeight(Gamedata :: getInstance().getXmlInt("world/height")),
+  worldWidth(Gamedata::getInstance().getXmlInt("world/worldWidth")),
+  worldHeight(Gamedata::getInstance().getXmlInt("world/worldHeight")),
   objWidth(0), objHeight(0),
   objectToTrack(NULL) 
 {}

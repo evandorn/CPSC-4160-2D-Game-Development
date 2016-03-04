@@ -1,3 +1,11 @@
+//
+//  frame.cpp
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include "SDL/SDL_rotozoom.h"
 #include "drawable.h"
 #include "frame.h"
@@ -10,14 +18,6 @@ Frame::Frame( SDL_Surface* surf ) :
   width(surf->w), 
   height(surf->h)
 { }
-
-Frame::Frame( SDL_Surface* spr, Uint16 w, Uint16 h,
-              Sint16 src_x, Sint16 src_y) :
-  screen(IOManager::getInstance().getScreen()),
-  surface(spr), 
-  width(w), height(h),
-  sourceX(src_x), sourceY(src_y) {
-}
 
 Frame::Frame( const Frame& frame ) :
   screen(frame.screen),

@@ -1,21 +1,23 @@
+//
+//  ioManager.cpp
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #include <iostream>
 #include <iomanip>
 #include "ioManager.h"
 
-/*IOManager* IOManager::getInstance() {
-  if ( !instance ) instance = new IOManager;
-  return instance;
-}
-*/
-
-IOManager& IOManager::getInstance(){ 
-  static IOManager instance; 
+IOManager& IOManager::getInstance() {
+  static IOManager instance;
   return instance;
 }
 
 IOManager::IOManager( ) :
   gdata( Gamedata::getInstance() ),
-  viewWidth( gdata.getXmlInt("view/width") ), //Changhed to . 
+  viewWidth( gdata.getXmlInt("view/width") ),
   viewHeight( gdata.getXmlInt("view/height") ),
   MAX_STRING_SIZE( gdata.getXmlInt("maxStringSize") ),
     // The 3rd and 4th parameters are just as important as the first 2!
@@ -32,13 +34,13 @@ IOManager::IOManager( ) :
     throw std::string("TTF_Init failed: ") + TTF_GetError();
   }
   font = TTF_OpenFont(
-         gdata.getXmlStr("font/file").c_str(), //Changed 
+         gdata.getXmlStr("font/file").c_str(), 
          gdata.getXmlInt("font/size")
          );
   if ( !font ) {
     throw std::string("TTF_OpenFont failed: ") + TTF_GetError();
   }
-  color.r = gdata.getXmlInt("font/red"); //changed to . for Meyers
+  color.r = gdata.getXmlInt("font/red");
   color.g = gdata.getXmlInt("font/green");
   color.b = gdata.getXmlInt("font/blue");
   color.unused = gdata.getXmlInt("font/unused");
@@ -116,6 +118,5 @@ void IOManager::buildString(SDL_Event event) {
       inputString.erase( length - 1 );
   }
 }
-
 
 

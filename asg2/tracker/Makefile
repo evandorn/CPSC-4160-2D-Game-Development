@@ -35,7 +35,7 @@ clean:
 	rm -rf $(OBJS)
 	rm -rf $(DEPS)
 	rm -rf $(EXEC)
-	rm -rf *.d.*
+	rm -rf frames/*.bmp
 
 # Phony target to use clang for compile and linking
 setclang:

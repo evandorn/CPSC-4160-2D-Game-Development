@@ -1,3 +1,11 @@
+//
+//  frame.h
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #ifndef FRAME__H
 #define FRAME__H
 
@@ -8,11 +16,9 @@
 class Frame {
 public:
   Frame( SDL_Surface*);
-  Frame( SDL_Surface* spr, Uint16 w, Uint16 h, Sint16 src_x, Sint16 src_y);
 
   // ExplodingSprite::makeChunks needs this constructor if
   // we are not going to keep each chunk on a separate surface:
-
   Frame(const Frame&);
   Frame& operator=(const Frame&);
 
@@ -26,15 +32,11 @@ public:
 
   Uint16 getWidth()  const { return surface->w; }
   Uint16 getHeight() const { return surface->h; }
-
- 
 private:
   SDL_Surface * screen;
   SDL_Surface * surface;
   Uint16 width;
   Uint16 height;
-  Sint16 sourceX;
-  Sint16 sourceY;
   Frame();
 };
 

@@ -1,3 +1,11 @@
+//
+//  viewport.h
+//  CPSC-4160-Project-2
+//
+//  Created by Evan Dorn on 2/23/16.
+//  Copyright © 2016 evandorn. All rights reserved.
+//
+
 #ifndef VIEWPORT__H
 #define VIEWPORT__H
 #include "drawable.h"
@@ -19,7 +27,7 @@ public:
   const Drawable* getObjectToTrack() const { return objectToTrack; } 
 
 private:
-  const Gamedata& gdata; //Changed to & for Meyers 
+  const Gamedata& gdata;
   Vector2f position;
   unsigned viewWidth;
   unsigned viewHeight;
