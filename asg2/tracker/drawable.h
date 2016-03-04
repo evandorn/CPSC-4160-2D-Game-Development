@@ -1,21 +1,11 @@
-//
-//  drawable.h
-//  CPSC-4160-Project-2
-//
-//  Created by Evan Dorn on 2/23/16.
-//  Copyright © 2016 evandorn. All rights reserved.
-//
-
 #ifndef DRAWABLE__H
 #define DRAWABLE__H
 #include <SDL.h>
 #include <iostream>
 #include <string>
+#include <string>
 #include "vector2f.h"
 #include "frame.h"
-
-const int WORLD_WIDTH = 2000;
-const int WORLD_HEIGHT = 960;
  
 // Drawable is an Abstract Base Class (ABC) that
 // specifies the methods that derived classes may
@@ -31,12 +21,12 @@ public:
 
   virtual ~Drawable() {}
 
-  const std::string& getName() const { return name; }
-  void setName(const std::string& n) { name = n;    }
   virtual const Frame* getFrame() const = 0;
-
   virtual void draw() const = 0;
   virtual void update(Uint32 ticks) = 0;
+
+  const std::string& getName() const { return name; }
+  void setName(const std::string& n) { name = n;    }
 
   float X() const { return position[0]; }
   void X(float x) { position[0] = x;    }
@@ -57,6 +47,7 @@ public:
   virtual bool collidedWith(const Drawable*) const { 
     throw std::string("No collidedWith");  
   }
+  virtual void explode() { throw name+std::string(" can't explode"); }
 
 private:
   std::string name;
