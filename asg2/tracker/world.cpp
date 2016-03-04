@@ -15,8 +15,8 @@ World::World(const std::string& name, int fact) :
   frame( FrameFactory::getInstance().getFrame(name) ),
   factor(fact),
     frameWidth( frame->getWidth() ),
-    worldWidth( WORLD_WIDTH ),
-    viewX(0.0), viewY(0.0), 
+    worldWidth( Gamedata::getInstance().getXmlInt("world/width") ),
+    viewX(0.0), viewY(0.0),
     view(Viewport::getInstance()) 
 {}
 
