@@ -8,7 +8,8 @@ Frame::Frame( SDL_Surface* surf ) :
   screen(IOManager::getInstance().getScreen()),
   surface( surf ),
   width(surf->w), 
-  height(surf->h)
+  height(surf->h),
+  sourceX(0), sourceY(0)
 { }
 
 Frame::Frame( SDL_Surface* spr, Uint16 w, Uint16 h,
@@ -23,7 +24,8 @@ Frame::Frame( const Frame& frame ) :
   screen(frame.screen),
   surface(frame.surface), 
   width(surface->w), 
-  height(surface->h)
+  height(surface->h),
+  sourceX(0), sourceY(0)
 { }
 
 
