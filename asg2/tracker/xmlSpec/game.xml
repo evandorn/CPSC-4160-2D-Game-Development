@@ -26,7 +26,7 @@
   <red>193</red>
   <green>205</green>
   <blue>205</blue>
-  <factor>1</factor>
+  <factor>3</factor>
   <transparency>false</transparency>
 </stars>
 
@@ -50,26 +50,26 @@
 
 <samus>
   <file>images/samus_right.bmp</file>
-  <startLoc x="120" y="1000"/>
+  <startLoc x="120" y="950"/>
   <frames>10</frames>
   <frameInterval>4</frameInterval>
-  <speedX>-200</speedX>
+  <speedX>-150</speedX>
   <speedY>0</speedY>
-  <transparency>true</transparency>
+  <transparency>false</transparency>
 </samus>
 
 <metroidgaint>
   <file>images/metroidgaint.png</file>
-  <startLoc x="320" y="1000"/>
-  <speedX>-175</speedX>
+  <startLoc x="320" y="860"/>
+  <speedX>80</speedX>
   <speedY>0</speedY>
   <transparency>true</transparency>
 </metroidgaint>
 
 <metroidtiny>
   <file>images/metroidtiny.png</file>
-  <startLoc x="320" y="1000"/>
-  <speedX>175</speedX>
+  <startLoc x="320" y="860"/>
+  <speedX>95</speedX>
   <speedY>0</speedY>
   <transparency>true</transparency>
 </metroidtiny>
