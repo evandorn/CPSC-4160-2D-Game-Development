@@ -63,7 +63,7 @@
 
 <samus>
     <file>images/samus_right.bmp</file>
-    <startLoc x="120" y="950"/>
+    <startLoc x="300" y="950"/>
     <frames>10</frames>
     <frameInterval>4</frameInterval>
     <speedX>-150</speedX>
@@ -82,7 +82,7 @@
 
 <metroidgaint>
     <file>images/metroidgaint.png</file>
-    <startLoc x="320" y="860"/>
+    <startLoc x="140" y="860"/>
     <speedX>80</speedX>
     <speedY>0</speedY>
     <transparency>true</transparency>
@@ -99,7 +99,7 @@
 
 <metroidtiny>
     <file>images/metroidtiny.png</file>
-    <startLoc x="320" y="860"/>
+    <startLoc x="120" y="860"/>
     <speedX>95</speedX>
     <speedY>0</speedY>
     <transparency>true</transparency>
