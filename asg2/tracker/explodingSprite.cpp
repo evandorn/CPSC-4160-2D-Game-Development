@@ -51,18 +51,16 @@ void ExplodingSprite::makeChunks(unsigned int n) {
   int speedy = static_cast<int>(velocityY()); // Make sure it's an int.
   if (speedx == 0) speedx = 1; // Make sure it's not 0;
   if (speedy == 0) speedy = 1; // Make sure it's not 0;
-  int chunkVel = 
-    Gamedata::getInstance().getXmlInt(getName()+"/chunk/velocity");
 
   // Get the SDL_Surface so we can chunk it:
   SDL_Surface* spriteSurface(getFrame()->getSurface()); 
-  Sint16 source_y = getFrame()->getSourceY();
+  Sint16 source_y = 0;
   while  (source_y < getFrame()->getHeight() ) {
-    Sint16 source_x = getFrame()->getSourceX();
+    Sint16 source_x = 0;
     while ( source_x < getFrame()->getWidth() ) {
       // Give each chunk it's own speed/direction:
-      float sx = (rand() % speedx + chunkVel) * (rand()%2?-1:1);
-      float sy = (rand() % speedy + chunkVel) * (rand()%2?-1:1);
+      float sx = (rand() % speedx + 40) * (rand()%2?-1:1); // 'cause %0 is 
+      float sy = (rand() % speedy + 40) * (rand()%2?-1:1); // float except
       Frame* frame = 
             new Frame(spriteSurface, chunk_width, chunk_height,
                   source_x, source_y
@@ -82,3 +80,4 @@ void ExplodingSprite::makeChunks(unsigned int n) {
     source_y += chunk_height;
   }
 }
+
