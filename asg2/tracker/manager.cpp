@@ -60,6 +60,7 @@ void Manager::draw() const {
   io.printMessageValueAt("Seconds: ", clock.getSeconds(), 10, 20);
   io.printMessageValueAt("fps: ", clock.getAvgFps(), 10, 40);
   io.printMessageAt("Press T to switch sprites", 10, 70);
+  io.printMessageAt("Press 1, 2 to explode a sprite", 400, 70);
     /*
   io.printMessageAt("Press P to pause the animation", 10, 90);
      */
@@ -123,6 +124,12 @@ void Manager::play() {
           done = true;
           break;
         }
+          if ( keystate[SDLK_1] ) {
+              sprites[1]->explode();
+          }
+          if ( keystate[SDLK_2] ) {
+              sprites[2]->explode();
+          }
         if ( keystate[SDLK_t] ) {
           switchSprite();
         }
