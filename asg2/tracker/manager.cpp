@@ -60,7 +60,7 @@ void Manager::draw() const {
   io.printMessageValueAt("Seconds: ", clock.getSeconds(), 10, 20);
   io.printMessageValueAt("fps: ", clock.getAvgFps(), 10, 40);
   io.printMessageAt("Press T to switch sprites", 10, 70);
-  io.printMessageAt("Press 1, 2 to explode a sprite", 400, 70);
+  io.printMessageAt("Press 1, 2 to explode a sprite", 20, 70);
     /*
   io.printMessageAt("Press P to pause the animation", 10, 90);
      */

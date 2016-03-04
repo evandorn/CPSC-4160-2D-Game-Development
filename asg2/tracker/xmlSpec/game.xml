@@ -17,8 +17,8 @@
 </view>
 
 <world>
-    <width>1500</width>
-    <height>1000</height>
+    <worldWidth>1500</worldWidth>
+    <worldHeight>1000</worldHeight>
 </world>
 
 <clock>
@@ -44,7 +44,7 @@
     <red>193</red>
     <green>205</green>
     <blue>205</blue>
-    <factor>3</factor>
+    <factor>2</factor>
     <width>1500</width>
     <height>1000</height>
      <srcX> 0 </srcX>
