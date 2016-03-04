@@ -1,11 +1,3 @@
-//
-//  clock.cpp
-//  CPSC-4160-Project-2
-//
-//  Created by Evan Dorn on 2/23/16.
-//  Copyright © 2016 evandorn. All rights reserved.
-//
-
 #include <cmath>
 #include <iostream>
 #include <string>
@@ -15,7 +7,7 @@
 #include "ioManager.h"
 
 Clock& Clock::getInstance() {
- if ( SDL_WasInit(SDL_INIT_VIDEO) == 0) {
+  if ( SDL_WasInit(SDL_INIT_VIDEO) == 0) {
     throw std::string("Must init SDL before Clock");
   }
   static Clock clock; 
@@ -23,145 +15,85 @@ Clock& Clock::getInstance() {
 }
 
 Clock::Clock() :
-  started(false),
-  paused(false),
-  sloMo(false),
-  framesAreCapped(Gamedata::getInstance().getXmlBool("framesAreCapped")), 
-  frameCap(Gamedata::getInstance().getXmlInt("frameCap")), 
-  frames(0), 
-  recentFrames(),
-  maxFramesToAvg(100),
-  tickSum(0),
-  sumOfAllTicks(0),
-  timeAtStart(0), timeAtPause(0),
-  currTicks(0), prevTicks(0), ticks(0) 
-  {
-  start();
+  frames(0),
+  ticksSinceLastFrame(0),
+  ticksAtLastFrame(0),
+  sumOfTicks(0),
+  started(false), 
+  paused(false), 
+  sloMo(false), 
+  fpsLoc(Gamedata::getInstance().getXmlInt("clock/fpsLoc/x"),
+         Gamedata::getInstance().getXmlInt("clock/fpsLoc/y")),
+  secondsLoc(Gamedata::getInstance().getXmlInt("clock/secondsLoc/x"),
+         Gamedata::getInstance().getXmlInt("clock/secondsLoc/y")),
+
+  capFrameRate(false)
+{
+    start();
 }
 
 Clock::Clock(const Clock& c) :
-  started(c.started),
-  paused(c.paused),
+  frames(c.frames), 
+  ticksSinceLastFrame(c.ticksSinceLastFrame), 
+  ticksAtLastFrame(c.ticksAtLastFrame), 
+  sumOfTicks(c.sumOfTicks),
+  started(c.started), 
+  paused(c.paused), 
   sloMo(c.sloMo), 
-  framesAreCapped(c.framesAreCapped), 
-  frameCap(c.frameCap), 
-  frames(c.frames), recentFrames(c.recentFrames), 
-  maxFramesToAvg(c.maxFramesToAvg), tickSum(c.tickSum),
-  sumOfAllTicks(c.sumOfAllTicks),
-  timeAtStart(c.timeAtStart), timeAtPause(c.timeAtPause),
-  currTicks(c.currTicks), prevTicks(c.prevTicks), ticks(c.ticks)
-  {
-  start();
+  fpsLoc(c.fpsLoc),
+  secondsLoc(c.secondsLoc),
+  capFrameRate(c.capFrameRate)
+{
+  // The next line seems wrong; so I will delete it!
+  //start();
 }
 
-void Clock::display() const { 
-  static unsigned int lastFrames = 0;
-  static unsigned int oldFrames = 0;
-  static unsigned int seconds = getSeconds();
+void Clock::draw() const { 
+  IOManager::getInstance().
+    printMessageValueAt("fps: ", getFps(), fpsLoc[0], fpsLoc[1]);
+  IOManager::getInstance().
+    printMessageValueAt("seconds: ", getSeconds(), 
+                                     secondsLoc[0], secondsLoc[1]);
+}
 
-  if ( getSeconds() > seconds ) {
-    seconds = getSeconds();
-    lastFrames = frames - oldFrames;
-    oldFrames = frames;
-  }
-  IOManager::getInstance().
-    printMessageValueAt("seconds: ", seconds, 10, 30);
-  IOManager::getInstance().
-    printMessageValueAt("frames in sec: ", lastFrames, 10, 50);
+void Clock::update() { 
+  if ( paused ) return;
+  ++frames;
+  unsigned int clockTicks = SDL_GetTicks(); 
+  ticksSinceLastFrame = clockTicks - ticksAtLastFrame;
+  sumOfTicks += ticksSinceLastFrame;
+  ticksAtLastFrame = clockTicks;
+}
+
+unsigned int Clock::getTicksSinceLastFrame() const {
+  if (paused) return 0;
+  return ticksSinceLastFrame;
 }
 
 void Clock::toggleSloMo() {
-    if(started && !sloMo) {
-        timeAtPause = SDL_GetTicks() - timeAtStart;
-        sloMo = true;
-    }
-    else if (started && sloMo) {
-        timeAtStart = SDL_GetTicks() - timeAtPause;
-        sloMo = false;
-    }
-}
-
-unsigned int Clock::getTicks() const {
-    if (paused) {
-        return timeAtPause;
-    }
-    else if (sloMo) {
-        return 1;
-    }
-    else {
-        return SDL_GetTicks() - timeAtStart;
-    }
-}
-
-unsigned int Clock::getElapsedTicks() {
-    if (paused) { return 0; }
-    else if (sloMo) { return 1; }
-    
-    currTicks = getTicks();
-    ticks = currTicks-prevTicks;
-    unsigned int delay = capFrameRate();
-    prevTicks = currTicks + delay;
-    ticks += delay;
-    sumOfAllTicks += ticks;
-    return ticks;
-}
-
-
-unsigned int Clock::capFrameRate() const { 
-  if ( !framesAreCapped ) return 0u;
-  unsigned int delay = std::max(0.0,1000.0/frameCap+0.5 - ticks);
-  SDL_Delay( delay );
-  return delay;
+  std::cout << "Slo Mo not implemented yet!" << std::endl;
 }
 
 int Clock::getFps() const { 
-  if ( getSeconds() > 0 ) return frames/getSeconds();  
-  else if ( getTicks() > 5000 and getFrames() == 0 ) {
-    throw std::string("Can't getFps if you don't increment the frames");
-  }
-  else return 0;
-}
-
-int Clock::getAvgFps() const { 
-  if ( getSeconds() > 0 && recentFrames.size() > maxFramesToAvg/2) {
-    return recentFrames.size()/(tickSum/1000.0);  
-  }
-  if ( getTicks() > 5000 and getFrames() == 0 ) {
-    throw std::string("Can't getFps if you don't increment the frames");
-  }
+  if ( getSeconds() > 0 && frames > 0) return frames/getSeconds();  
   return 0;
 }
 
-Clock& Clock::operator++() {
-    if (!paused) {
-        ++frames;
-        if ( recentFrames.size() >= maxFramesToAvg ) {
-            tickSum -= recentFrames.front();
-            recentFrames.pop_front();
-        }
-        recentFrames.push_back( ticks );
-        tickSum += ticks;
-    }
-    return *this;
-}
-
-void Clock::start() {
-    started = true;
-    paused = false;
-    frames = 0;
-    timeAtPause = timeAtStart = SDL_GetTicks();
+void Clock::start() { 
+  started = true; 
+  paused = false; 
+  frames = 0;
+  ticksAtLastFrame = SDL_GetTicks(); 
 }
 
 void Clock::pause() {
-    if( started && !paused ) {
-        timeAtPause = SDL_GetTicks() - timeAtStart;
-        paused = true;
-    }
+  if( started && !paused ) {
+    paused = true;
+  }
 }
 void Clock::unpause() {
-    if( started && paused ) {
-        timeAtStart = SDL_GetTicks() - timeAtPause;
-        paused = false;
-    }
+  if( started && paused ) {
+    ticksAtLastFrame = SDL_GetTicks();
+    paused = false;
+  }
 }
-

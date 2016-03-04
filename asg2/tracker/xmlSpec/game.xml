@@ -11,67 +11,107 @@
 <frameMax>300</frameMax>
 <username>dorn3</username>
 
-<world>
-  <worldWidth>1500</worldWidth>
-  <worldHeight>1000</worldHeight>
-</world>
-
 <view>
   <width>854</width>
   <height>480</height>
 </view>
 
-<stars>
-  <file>images/starfield.png</file>
-  <red>193</red>
-  <green>205</green>
-  <blue>205</blue>
-  <factor>3</factor>
-  <transparency>false</transparency>
-</stars>
+<world>
+    <width>1500</width>
+    <height>1000</height>
+</world>
+
+<clock>
+  <fpsLoc x="10" y="10"/>
+  <secondsLoc x="10" y="30"/>
+</clock>
 
 <back>
-  <file>images/metroidbg.png</file>
-  <red>193</red>
-  <green>205</green>
-  <blue>205</blue>
-  <factor>1</factor>
-  <transparency>false</transparency>
+    <file>images/metroidbg.png</file>
+    <red>193</red>
+    <green>205</green>
+    <blue>205</blue>
+    <factor>1</factor>
+    <width>1500</width>
+    <height>1000</height>
+    <srcX> 0 </srcX>
+   <srcY> 0 </srcY> 
+    <transparency>false</transparency>
 </back>
 
+<stars>
+    <file>images/starfield.png</file>
+    <red>193</red>
+    <green>205</green>
+    <blue>205</blue>
+    <factor>3</factor>
+    <width>1500</width>
+    <height>1000</height>
+     <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
+    <transparency>false</transparency>
+</stars>
+
 <font name="font">
-  <file>font/dyslexic-bold.otf</file>
-  <size>16</size>
-  <red>255</red>
-  <green>255</green>
-  <blue>255</blue>
-  <unused>0</unused>
+    <file>font/dyslexic-bold.otf</file>
+    <size>16</size>
+    <red>255</red>
+    <green>255</green>
+    <blue>255</blue>
+    <unused>0</unused>
 </font>
 
 <samus>
-  <file>images/samus_right.bmp</file>
-  <startLoc x="120" y="950"/>
-  <frames>10</frames>
-  <frameInterval>4</frameInterval>
-  <speedX>-150</speedX>
-  <speedY>0</speedY>
-  <transparency>false</transparency>
+    <file>images/samus_right.bmp</file>
+    <startLoc x="120" y="950"/>
+    <frames>10</frames>
+    <frameInterval>4</frameInterval>
+    <speedX>-150</speedX>
+    <speedY>0</speedY>
+    <transparency>false</transparency>
+   <width>350</width>
+   <height>48</height>
+   <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
+    <chunk>
+        <size>9</size>
+        <distance>200</distance>
+        <velocity>40</velocity>
+    </chunk>
 </samus>
 
 <metroidgaint>
-  <file>images/metroidgaint.png</file>
-  <startLoc x="320" y="860"/>
-  <speedX>80</speedX>
-  <speedY>0</speedY>
-  <transparency>true</transparency>
+    <file>images/metroidgaint.png</file>
+    <startLoc x="320" y="860"/>
+    <speedX>80</speedX>
+    <speedY>0</speedY>
+    <transparency>true</transparency>
+   <width> 110</width>
+   <height> 110 </height>
+    <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
+    <chunk>
+        <size>9</size>
+        <distance>200</distance>
+        <velocity>40</velocity>
+    </chunk>
 </metroidgaint>
 
 <metroidtiny>
-  <file>images/metroidtiny.png</file>
-  <startLoc x="320" y="860"/>
-  <speedX>95</speedX>
-  <speedY>0</speedY>
-  <transparency>true</transparency>
+    <file>images/metroidtiny.png</file>
+    <startLoc x="320" y="860"/>
+    <speedX>95</speedX>
+    <speedY>0</speedY>
+    <transparency>true</transparency>
+    <width> 47 </width>
+    <height> 52 </height>
+     <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
+    <chunk>
+        <size>9</size>
+        <distance>200</distance>
+        <velocity>40</velocity>
+    </chunk>
 </metroidtiny>
 
 </GameData>
