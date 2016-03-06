@@ -67,4 +67,3 @@ void Frame::draw(Sint16 x, Sint16 y, double angle) const {
   SDL_BlitSurface(tmp, &src, screen, &dest);
   SDL_FreeSurface( tmp );
 }
-
