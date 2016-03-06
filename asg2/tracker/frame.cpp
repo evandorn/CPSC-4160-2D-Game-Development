@@ -27,6 +27,8 @@ screen(IOManager::getInstance().getScreen()),
 surface( surf ),
 width(surf->w),
 height(surf->h)
+sourceX(frame.sourceX),
+sourceY(frame.sourceY)
 { }
 
 
