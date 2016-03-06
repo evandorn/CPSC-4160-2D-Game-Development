@@ -26,9 +26,9 @@ Frame::Frame( SDL_Surface* surf ) :
 screen(IOManager::getInstance().getScreen()),
 surface( surf ),
 width(surf->w),
-height(surf->h)
-sourceX(frame.sourceX),
-sourceY(frame.sourceY)
+height(surf->h),
+sourceX(0),
+sourceY(0)
 { }
 
 
