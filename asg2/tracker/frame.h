@@ -9,6 +9,7 @@ class Frame {
 public:
     Frame( const std::string&, SDL_Surface*);
     
+    Frame( SDL_Surface*);
     // ExplodingSprite::makeChunks needs this constructor if
     // we are not going to keep each chunk on a separate surface:
     Frame( SDL_Surface* spr, Uint16 w, Uint16 h, Sint16 src_x, Sint16 src_y);

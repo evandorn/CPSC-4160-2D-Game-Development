@@ -21,6 +21,15 @@ width(w), height(h),
 sourceX(src_x), sourceY(src_y) {
 }
 
+
+Frame::Frame( SDL_Surface* surf ) :
+screen(IOManager::getInstance().getScreen()),
+surface( surf ),
+width(surf->w),
+height(surf->h)
+{ }
+
+
 Frame::Frame( const Frame& frame ) :
 screen(frame.screen),
 surface(frame.surface),
