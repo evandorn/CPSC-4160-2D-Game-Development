@@ -10,6 +10,7 @@
 #include <string>
 #include <iomanip>
 #include "multisprite.h"
+#include "TwoWayMultiFrameSprite.h"
 #include "sprite.h"
 #include "gamedata.h"
 #include "manager.h"
@@ -44,7 +45,7 @@ Manager::Manager() :
   }
   SDL_WM_SetCaption(title.c_str(), NULL);
   atexit(SDL_Quit);
-  sprites.push_back( new MultiSprite("samus") );
+  sprites.push_back( new TwoWayMultiFrameSprite("samus") );
   sprites.push_back( new Sprite("metroidgaint") );
   sprites.push_back( new Sprite("metroidtiny") );
   viewport.setObjectToTrack(sprites[currentSprite]);
