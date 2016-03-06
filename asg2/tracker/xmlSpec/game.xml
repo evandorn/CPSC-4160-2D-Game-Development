@@ -73,6 +73,9 @@
    <height>48</height>
    <srcX> 0 </srcX>
    <srcY> 0 </srcY>
+   <Leftfile>images/samus_left.bmp</Leftfile>
+   <samusLeftFrames>10</samusLeftFrames>
+   <transparency>false</transparency>
     <chunk>
         <size>9</size>
         <distance>200</distance>
