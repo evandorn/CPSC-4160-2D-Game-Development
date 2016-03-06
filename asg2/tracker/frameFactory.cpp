@@ -20,7 +20,33 @@ multiFrames()
 {}
 
 FrameFactory::~FrameFactory() {
-    std::cout << "FrameFactory has leaks!" << std::endl;
+    std::cout << "Deleting FrameFactory" << std::endl;
+    std::map<std::string, SDL_Surface*>::iterator itSurf = surfaces.begin();
+    while ( itSurf != surfaces.end() ) {
+        SDL_FreeSurface( itSurf->second );
+        ++itSurf;
+    }
+    std::map<std::string, std::vector<SDL_Surface*> >::iterator
+    surfaces = multiSurfaces.begin();
+    while ( surfaces != multiSurfaces.end() ) {
+        for (unsigned int i = 0; i < surfaces->second.size(); ++i) {
+            SDL_FreeSurface( surfaces->second[i] );
+        }
+        ++surfaces;
+    }
+    std::map<std::string, Frame*>::iterator frame = frames.begin();
+    while ( frame != frames.end() ) {
+        delete frame->second;
+        ++frame;
+    }
+    std::map<std::string, std::vector<Frame*> >::iterator
+    frames = multiFrames.begin();
+    while ( frames != multiFrames.end() ) {
+        for (unsigned int i = 0; i < frames->second.size(); ++i) {
+            delete frames->second[i];
+        }
+        ++frames;
+    }
 }
 
 FrameFactory& FrameFactory::getInstance() {
@@ -28,6 +54,24 @@ FrameFactory& FrameFactory::getInstance() {
     return factory;
 }
 
+Frame* FrameFactory::getFrame(const std::string& name) {
+    std::map<std::string, Frame*>::const_iterator pos = frames.find(name);
+    if ( pos == frames.end() ) {
+        SDL_Surface * const surface =
+        IOManager::getInstance().loadAndSet(
+                                            gdata.getXmlStr(name+"/file"), //Changed to . for Meyers
+                                            gdata.getXmlBool(name+"/transparency"));
+        surfaces[name] = surface;
+        Frame * const frame =new Frame(surface);
+        frames[name] = frame;
+        return frame;
+    }
+    else {
+        return pos->second;
+    }
+}
+
+/*
 Frame* FrameFactory::getFrame(const std::string& name) {
     // Obviously, this is not correct. Please model this after getFrames
     // Should you use ExtractSurface?
@@ -41,6 +85,7 @@ Frame* FrameFactory::getFrame(const std::string& name) {
     frames[name] = frame;
     return frame;
 }
+ */
 
 std::vector<Frame*> FrameFactory::getFrames(const std::string& name) {
     // First search map to see if we've already made it:
