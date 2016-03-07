@@ -11,7 +11,7 @@
 #include "gamedata.h"
 #include "frameFactory.h"
 
-void TwoWayMultiSprite::advanceFrame(Uint32 ticks) {
+void TwoWayMultiFrameSprite::advanceFrame(Uint32 ticks) {
     timeSinceLastFrame += ticks;
     if (timeSinceLastFrame > frameInterval) {
         currentFrame = (currentFrame+1) % numberOfFrames;
@@ -19,7 +19,7 @@ void TwoWayMultiSprite::advanceFrame(Uint32 ticks) {
     }
 }
 
-TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
+TwoWayMultiFrameSprite::TwoWayMultiFrameSprite( const std::string& name) :
 Drawable(name,
          Vector2f(Gamedata::getInstance().getXmlInt(name+"RightX"),
                   Gamedata::getInstance().getXmlInt(name+"RightY")),
@@ -41,7 +41,7 @@ frameWidth(frames[0]->getWidth()),
 frameHeight(frames[0]->getHeight())
 { }
 
-TwoWayMultiSprite::TwoWayMultiSprite(const std::string& name,
+TwoWayMultiFrameSprite::TwoWayMultiFrameSprite(const std::string& name,
                                      const Vector2f& pos, const Vector2f& vel,
                                      const std::vector<Frame*>& fmsLeft,const std::vector<Frame*>& fmsRight) :
 Drawable(name, pos, vel),
@@ -60,7 +60,7 @@ frameWidth(fmsRight[0]->getWidth()),
 frameHeight(fmsRight[0]->getHeight())
 { }
 
-TwoWayMultiSprite::TwoWayMultiSprite(const TwoWayMultiSprite& s) :
+TwoWayMultiFrameSprite::TwoWayMultiFrameSprite(const TwoWayMultiFrameSprite& s) :
 Drawable(s.getName(), s.getPosition(), s.getVelocity()),
 framesLeft(s.framesLeft),
 framesRight(s.framesRight),
@@ -77,13 +77,13 @@ frameHeight( s.frameHeight )
 { }
 
 
-void TwoWayMultiSprite::draw() const {
+void TwoWayMultiFrameSprite::draw() const {
     Uint32 x = static_cast<Uint32>(X());
     Uint32 y = static_cast<Uint32>(Y());
     frames[currentFrame]->draw(x, y);
 }
 
-void TwoWayMultiSprite::update(Uint32 ticks) {
+void TwoWayMultiFrameSprite::update(Uint32 ticks) {
     advanceFrame(ticks);
     
     Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;

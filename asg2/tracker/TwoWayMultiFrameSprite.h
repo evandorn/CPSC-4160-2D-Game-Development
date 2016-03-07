@@ -15,15 +15,15 @@
 
 #include "drawable.h"
 
-class TwoWayMultiSprite : public Drawable {
+class TwoWayMultiFrameSprite : public Drawable {
 public:
-    TwoWayMultiSprite(const std::string&);
+    TwoWayMultiFrameSprite(const std::string&);
     
-    TwoWayMultiSprite(const std::string&, const Vector2f& pos, const Vector2f& vel,
+    TwoWayMultiFrameSprite(const std::string&, const Vector2f& pos, const Vector2f& vel,
                       const std::vector<Frame*>& fmsLeft,const std::vector<Frame*>& fmsRight);
     
-    TwoWayMultiSprite(const TwoWayMultiSprite&);
-    virtual ~TwoWayMultiSprite() { }
+    TwoWayMultiFrameSprite(const TwoWayMultiFrameSprite&);
+    virtual ~TwoWayMultiFrameSprite() { }
     
     
     
