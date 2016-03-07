@@ -7,7 +7,7 @@
 //
 #include <iostream>
 #include <cmath>
-#include "twowaymultisprite.h"
+#include "TwoWayMultiFrameSprite.h"
 #include "gamedata.h"
 #include "frameFactory.h"
 
@@ -21,21 +21,21 @@ void TwoWayMultiFrameSprite::advanceFrame(Uint32 ticks) {
 
 TwoWayMultiFrameSprite::TwoWayMultiFrameSprite( const std::string& name) :
 Drawable(name,
-         Vector2f(Gamedata::getInstance().getXmlInt(name+"RightX"),
-                  Gamedata::getInstance().getXmlInt(name+"RightY")),
-         Vector2f(Gamedata::getInstance().getXmlInt(name+"RightSpeedX"),
-                  Gamedata::getInstance().getXmlInt(name+"RightSpeedY"))
+         Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"),
+                  Gamedata::getInstance().getXmlInt(name+"/startLoc/y")),
+         Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX"),
+                  Gamedata::getInstance().getXmlInt(name+"/speedY"))
          ),
-framesLeft( FrameFactory::getInstance().getFrames(name+"Left") ),
-framesRight( FrameFactory::getInstance().getFrames(name+"Right") ),
+framesLeft( FrameFactory::getInstance().getFrames(name+"/left") ),
+framesRight( FrameFactory::getInstance().getFrames(name) ),
 frames(framesRight),
-worldWidth(Gamedata::getInstance().getXmlInt("worldWidth")),
-worldHeight(Gamedata::getInstance().getXmlInt("worldHeight")),
+worldWidth(Gamedata::getInstance().getXmlInt("world/worldWidth")),
+worldHeight(Gamedata::getInstance().getXmlInt("world/worldHeight")),
 
 dt(0),
 currentFrame(0),
-numberOfFrames( Gamedata::getInstance().getXmlInt(name+"RightFrames") ),
-frameInterval( Gamedata::getInstance().getXmlInt(name+"RightFrameInterval") ),
+numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
+frameInterval( Gamedata::getInstance().getXmlInt(name+"/frameInterval") ),
 timeSinceLastFrame( 0 ),
 frameWidth(frames[0]->getWidth()),
 frameHeight(frames[0]->getHeight())
@@ -53,8 +53,8 @@ worldHeight(Gamedata::getInstance().getXmlInt("worldHeight")),
 
 dt(0),
 currentFrame(0),
-numberOfFrames( Gamedata::getInstance().getXmlInt(name+"RightFrames") ),
-frameInterval( Gamedata::getInstance().getXmlInt(name+"RightFrameInterval") ),
+ numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
+frameInterval( Gamedata::getInstance().getXmlInt(name+"/frameInterval") ),
 timeSinceLastFrame( 0 ),
 frameWidth(fmsRight[0]->getWidth()),
 frameHeight(fmsRight[0]->getHeight())

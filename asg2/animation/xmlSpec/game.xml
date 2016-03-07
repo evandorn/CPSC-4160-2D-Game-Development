@@ -63,18 +63,26 @@
 
 <samus>
     <file>images/samus_right.bmp</file>
-    <startLoc x="300" y="950"/>
+    <startLoc x="0" y="950"/>
     <frames>10</frames>
-    <frameInterval>4</frameInterval>
-    <speedX>-150</speedX>
+    <frameInterval>2</frameInterval>
+    <speedX>-140</speedX>
     <speedY>0</speedY>
     <transparency>false</transparency>
    <width>350</width>
    <height>48</height>
    <srcX> 0 </srcX>
    <srcY> 0 </srcY>
-   <Leftfile>images/samus_left.bmp</Leftfile>
-   <samusLeftFrames>10</samusLeftFrames>
+  <left>
+   <file>images/samus_left.bmp</file>
+   <frameInterval>2</frameInterval>
+   <frames>10</frames>
+   <srcX> 0 </srcX>
+   <srcY> 0 </srcY>
+   <width>350</width>
+   <height>48</height>
+
+  </left>
    <transparency>false</transparency>
     <chunk>
         <size>9</size>
@@ -85,16 +93,16 @@
 
 <metroidgaint>
     <file>images/metroidgaint.png</file>
-    <startLoc x="140" y="860"/>
-    <speedX>80</speedX>
+    <startLoc x="20" y="890"/>
+    <speedX>150</speedX>
     <speedY>0</speedY>
-    <transparency>true</transparency>
+    <transparency>false</transparency>
    <width> 110</width>
    <height> 110 </height>
     <srcX> 0 </srcX>
    <srcY> 0 </srcY>
     <chunk>
-        <size>9</size>
+        <size>20</size>
         <distance>200</distance>
         <velocity>40</velocity>
     </chunk>
@@ -102,17 +110,17 @@
 
 <metroidtiny>
     <file>images/metroidtiny.png</file>
-    <startLoc x="120" y="860"/>
-    <speedX>95</speedX>
+    <startLoc x="30" y="870"/>
+    <speedX>160</speedX>
     <speedY>0</speedY>
-    <transparency>true</transparency>
+    <transparency>false</transparency>
     <width> 47 </width>
     <height> 52 </height>
      <srcX> 0 </srcX>
    <srcY> 0 </srcY>
     <chunk>
-        <size>9</size>
-        <distance>200</distance>
+        <size>50</size>
+        <distance>300</distance>
         <velocity>40</velocity>
     </chunk>
 </metroidtiny>
