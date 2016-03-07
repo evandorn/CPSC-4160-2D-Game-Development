@@ -10,42 +10,46 @@
 #define TwoWayMultiFrameSprite_h
 
 #include <string>
-#include <vector>
-#include "multisprite.h"
-
-
-#include <string>
 #include <iostream>
 #include <vector>
+
 #include "drawable.h"
 
-class TwoWayMultiFrameSprite : public Drawable {
+class TwoWayMultiSprite : public Drawable {
 public:
-    TwoWayMultiFrameSprite(const std::string& n,
-                           std::vector<Frame*>& fmsLeft,
-                           std::vector<Frame*>& fmsRight, const float sc);
-    TwoWayMultiFrameSprite(const TwoWayMultiFrameSprite& s);
-    virtual ~TwowayMultiframeSprite() { }
-    virtual const Frame* getFrame() const { return frames[currentFrame]; }
+    TwoWayMultiSprite(const std::string&);
+    
+    TwoWayMultiSprite(const std::string&, const Vector2f& pos, const Vector2f& vel,
+                      const std::vector<Frame*>& fmsLeft,const std::vector<Frame*>& fmsRight);
+    
+    TwoWayMultiSprite(const TwoWayMultiSprite&);
+    virtual ~TwoWayMultiSprite() { }
+    
+    
     
     virtual void draw() const;
     virtual void update(Uint32 ticks);
-    unsigned getPixel(Uint32, Uint32) const;
+    virtual const Frame* getFrame() const {
+        return frames[currentFrame];
+    }
     
-private:
-    std::vector<Frame *> framesLeft;
-    std::vector<Frame *> framesRight;
+    
+protected:
+    const std::vector<Frame *> framesLeft;
+    const std::vector<Frame *> framesRight;
     std::vector<Frame *> frames;
-    int frameWidth;
-    int frameHeight;
     int worldWidth;
     int worldHeight;
+    
     float dt;
     unsigned currentFrame;
     unsigned numberOfFrames;
     unsigned frameInterval;
+    float timeSinceLastFrame;
+    int frameWidth;
+    int frameHeight;
+    
     void advanceFrame(Uint32 ticks);
-    TwoWayMultiFrameSprite& operator=(const TwoWayMultiFrameSprite&);
 };
 
 #endif /* TwoWayMultiFrameSprite_h */
